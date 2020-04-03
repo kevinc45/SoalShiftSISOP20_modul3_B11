@@ -51,6 +51,7 @@ Untuk mendapatkan ekstensi dari file-file yang terdapat dalam folder `koleksi`, 
 
 Menggunakan fungsi `strrchr`, kita dapat mengambil *extension* dari mendeteksi simbol titik (.) pada nama *file*.
 
+Untuk memindah *file* dari satu *directory* ke *directory* lain, kita dapat menggunakan fungsi `rename()` yang terdapat dalam *header* `stdio.h`.
 
 
 
@@ -272,5 +273,5 @@ Kemudian print hasil
 
 Belum bisa outputnya keluar 4x5  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU3NjAwODY1XX0=
+eyJoaXN0b3J5IjpbMzYxNDQ5NTk3XX0=
 -->
