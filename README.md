@@ -6,7 +6,7 @@
 
 
 ## Pembahasan Soal 1
-
+Belum dapat terselesaikan karena terkendala belum menguasai thread.
 
 ## Pembahasan Soal 3
 >Buatlah sebuah program dari C untuk mengkategorikan file. Program ini akan
@@ -279,5 +279,5 @@ Kemudian print hasil
 
 Belum bisa outputnya keluar 4x5  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzg3NzE1MTQyXX0=
+eyJoaXN0b3J5IjpbLTUyMjIyNzUwNF19
 -->
