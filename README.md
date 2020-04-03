@@ -49,6 +49,8 @@ belum ada di soal3.zip.
 ## **Solution!**
 Untuk mendapatkan ekstensi dari file-file yang terdapat dalam folder `koleksi`, kelompok kami menggunakan potongan *code* yang terdapat [di sini](https://stackoverflow.com/questions/5309471/getting-file-extension-in-c).
 
+Menggunakan fungsi `strrchr`, kita dapat mengambil *extension* dari sebuah file dimana 
+
 
 
 ## Kendala & Penjelasan nomer 4.a
@@ -269,5 +271,5 @@ Kemudian print hasil
 
 Belum bisa outputnya keluar 4x5  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg2MDYyNzE1M119
+eyJoaXN0b3J5IjpbLTQwNDk5NzgyOV19
 -->
