@@ -13,7 +13,7 @@ setiap batunya memiliki warna yang berbeda.
 Norland mendapati ada sebuah teka-teki yang tertulis di setiap pilar. Untuk dapat
 mengambil batu mulia di suatu pilar, Ia harus memecahkan teka-teki yang ada di
 pilar tersebut. Norland menghampiri setiap pilar secara bergantian.
-- Batu mulia pertama. Emerald. Batu mulia yang berwarna hijau mengkilat. Pada
+Batu mulia pertama. Emerald. Batu mulia yang berwarna hijau mengkilat. Pada
 batu itu Ia menemukan sebuah kalimat petunjuk. Ada sebuah teka-teki yang berisi:
 1. Buatlah program C dengan nama "4a.c", yang berisi program untuk
 melakukan perkalian matriks. Ukuran matriks pertama adalah 4x2, dan
