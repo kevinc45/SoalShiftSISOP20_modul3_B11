@@ -1,11 +1,11 @@
 # SoalShiftSISOP20_modul3_B11
 
 
+## Ke
 
 
 
-
-## Kendala & penjelasan nomer 4.a
+## Kendala & Penjelasan nomer 4.a
 >Norland adalah seorang penjelajah terkenal. Pada suatu malam Norland menyusuri
 jalan setapak menuju ke sebuah gua dan mendapati tiga pilar yang pada setiap
 pilarnya ada sebuah batu berkilau yang tertancap. Batu itu berkilau di kegelapan dan
@@ -222,3 +222,6 @@ Kemudian print hasil
 ## kendala
 
 Belum bisa outputnya keluar 4x5  
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTkxMjUyNzQwMl19
+-->
