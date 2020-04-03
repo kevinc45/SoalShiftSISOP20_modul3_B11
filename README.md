@@ -46,6 +46,8 @@ juga menggunakan fork-exec dan system.
 dicoba-coba sendiri untuk kemungkinan test case lainnya yang mungkin
 belum ada di soal3.zip.
 
+## **Solution!**
+Untuk mendapatkan ekstensi file
 
 
 
@@ -267,5 +269,5 @@ Kemudian print hasil
 
 Belum bisa outputnya keluar 4x5  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NzcwNTE1Ml19
+eyJoaXN0b3J5IjpbLTE5MTA5MjY5MDVdfQ==
 -->
