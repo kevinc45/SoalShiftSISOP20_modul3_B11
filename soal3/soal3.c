@@ -45,6 +45,7 @@ else if (strcmp(argv[1],"*")==0){
 	strcat(directorymenu,get_filename_ext(de->d_name));
 	
 	strcpy(filebaru,directorymenu);
+	strcat(filebaru,"/");
 	strcat(filebaru,de->d_name);
 	
 
