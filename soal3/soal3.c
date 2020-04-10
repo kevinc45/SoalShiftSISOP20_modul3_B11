@@ -107,6 +107,10 @@ getcwd(directorylama, sizeof(directorylama));
 
 
 if (strcmp(argv[1],"-f")==0){
+	if (argc<3){
+		printf("Jumlah argumen kurang!\n");
+		return 0;
+	}
 	pthread_t tid[argc-2];
 	for(int t=2;t<argc;t++) pthread_create(&(tid[t-2]),NULL,mindahfilepakefungsiini,argv[t]);
 	for(int x=0; x<argc-2; x++) pthread_join(tid[x],NULL);
