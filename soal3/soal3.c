@@ -5,10 +5,14 @@
 #include <dirent.h>
 #include <errno.h>
 #include <sys/stat.h>
+#include <pthread.h>
+#include <ctype.h>
 
-char directorymenu[100];
+#define MAX 256
+
+char filelama[MAX][MAX];
 char directorylama[100];
-char filebaru[100];
+char cwd[MAX];
 
 const char *get_filename_ext(const char *filename) {
     const char *dot = strrchr(filename, '.');
@@ -16,15 +20,100 @@ const char *get_filename_ext(const char *filename) {
     return dot + 1;
 }
 
+void lower(char* s) {
+    for (int i = 0; i < strlen(s); i++) {
+        s[i] = tolower(s[i]);
+    }
+}
+
+void* mindahfilepakefungsiini(void *filelama){
+	char namafile[100];
+	char *x = (char*)filelama;
+	char *tmp = strrchr(x, '/');
+	if(!tmp) strcpy(namafile,x);
+	else strcpy(namafile,tmp);
+	//printf("fl=%s\n",filelama);
+	const char *ekstensifile = get_filename_ext(namafile);
+	char filebaru[100];
+	char ekstensifile2[100];	
+	strcpy(ekstensifile2,ekstensifile);
+	printf("eks:%s\n",ekstensifile);
+	if (strcmp(ekstensifile,"")==0) strcpy(ekstensifile2,"UNKNOWN");
+	printf("%s\n",ekstensifile2);
+	lower(ekstensifile2);
+	strcpy(filebaru,directorylama);
+	strcat(filebaru,"/");
+	strcat(filebaru,ekstensifile2);
+	strcat(filebaru,namafile);
+	mkdir(ekstensifile2,0755);
+	printf("x=%s\n",x);
+	printf("filebaru:%s\n",filebaru);
+	rename(x,filebaru);
+}
+
+void* mindahfilepakefungsiyangsatunya(void *filelama){
+	char namafile[100];
+	char *x = (char*)filelama;
+	char *tmp = strrchr(x, '/');
+	if(!tmp) strcpy(namafile,x);
+	else strcpy(namafile,tmp);
+	//printf("fl=%s\n",filelama);
+	const char *ekstensifile = get_filename_ext(namafile);
+	char filebaru[100];
+	char ekstensifile2[100];	
+	strcpy(ekstensifile2,ekstensifile);
+	printf("eks:%s\n",ekstensifile);
+	if (strcmp(ekstensifile,"")==0) strcpy(ekstensifile2,"UNKNOWN");
+	printf("%s\n",ekstensifile2);
+	lower(ekstensifile2);
+	strcpy(filebaru,directorylama);
+	strcat(filebaru,"/");
+	strcat(filebaru,ekstensifile2);
+	strcat(filebaru,"/");
+	strcat(filebaru,namafile);
+	mkdir(ekstensifile2,0755);
+	printf("x=%s\n",x);
+	printf("filebaru:%s\n",filebaru);
+	rename(x,filebaru);
+}
+
+void* mindahfilepakefungsiitu(void *filelama){
+	char namafile[100];
+	char *x = (char*)filelama;
+	char *tmp = strrchr(x, '/');
+	if(!tmp) strcpy(namafile,x);
+	else strcpy(namafile,tmp);
+	//printf("fl=%s\n",filelama);
+	const char *ekstensifile = get_filename_ext(namafile);
+	char filebaru[100];
+	char ekstensifile2[100];	
+	strcpy(ekstensifile2,ekstensifile);
+	printf("eks:%s\n",ekstensifile);
+	if (strcmp(ekstensifile,"")==0) strcpy(ekstensifile2,"UNKNOWN");
+	printf("%s\n",ekstensifile2);
+	lower(ekstensifile2);
+	strcpy(filebaru,directorylama);
+	strcat(filebaru,"/");
+	strcat(filebaru,ekstensifile2);
+	strcat(filebaru,namafile);
+	mkdir(ekstensifile2,0755);
+	printf("x=%s\n",x);
+	printf("filebaru:%s\n",filebaru);
+	rename(x,filebaru);
+}
+
 int main(int argc, char **argv){
+getcwd(directorylama, sizeof(directorylama));
 
 
 if (strcmp(argv[1],"-f")==0){
-
+	pthread_t tid[argc-2];
+	for(int t=2;t<argc;t++) pthread_create(&(tid[t-2]),NULL,mindahfilepakefungsiini,argv[t]);
+	for(int x=0; x<argc-2; x++) pthread_join(tid[x],NULL);
 }
 
 else if (strcmp(argv[1],"*")==0){
-	char direc[100];	
+	
 	struct dirent *de;
 	DIR *dir = opendir("/home/kevinc45/koleksi/");
 	
@@ -37,29 +126,44 @@ else if (strcmp(argv[1],"*")==0){
         
 	while(de = readdir(dir)){
 	if (de->d_type==4) continue;
-	
-	strcpy(directorylama,"/home/kevinc45/koleksi/");
-	strcat(directorylama,de->d_name);
-
-	strcpy(directorymenu,"/home/kevinc45/");
-	strcat(directorymenu,get_filename_ext(de->d_name));
-	
-	strcpy(filebaru,directorymenu);
-	strcat(filebaru,"/");
-	strcat(filebaru,de->d_name);
-	
-
-	DIR *dir2 = opendir(directorymenu);
-	mkdir(get_filename_ext(de->d_name),0755);		
-	rename(directorylama,filebaru);
-   	closedir(dir2);	
+	sprintf(filelama[count], "%s", de->d_name);
 	count++;
 	}
 
-    	closedir(dir);
+	closedir(dir);
+	pthread_t tid[count];
+	for(int x=0; x<count; x++) pthread_create(&(tid[x]),NULL,mindahfilepakefungsiyangsatunya,filelama[x]);
+	for(int x=0; x<count; x++) pthread_join(tid[x],NULL);
+
     return 0;
 }
-else if (strcmp(argv[1], "-d") == 0){}
+
+else if (strcmp(argv[1], "-d") == 0){
+	
+	struct dirent *de;
+	DIR *dir = opendir(argv[2]);
+	//strcpy(directorylama,argv[2]);
+	if(!dir){
+        printf("opendir() failed! Does it exist?\n");
+        return 1;
+    	}
+	
+
+	unsigned long count=0;
+    
+	while(de = readdir(dir)){
+	if (de->d_type==4) continue;
+	sprintf(filelama[count], "%s/%s", argv[2],de->d_name);
+	count++;
+	}
+
+	closedir(dir);
+	pthread_t tid[count];
+	for(int x=0; x<count; x++) pthread_create(&(tid[x]),NULL,mindahfilepakefungsiitu,filelama[x]);
+	for(int x=0; x<count; x++) pthread_join(tid[x],NULL);
+
+    return 0;
+}
 else{printf("Inputan salah!\n");}
 
 }
