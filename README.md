@@ -255,4 +255,19 @@ Disoal ini kita di suruh untuk menghitung jumlah folder dan file di dalam direkt
 dengan menggunakan system command 'ls' dan 'wc -l'
 dimana command ls digunakan untuk list folder dan file yang ada di sebuah direktori 
 dan command wc -l sendiri biasanya digunakan untuk prints the number of lines in a file.
-dalam kasus ini kami menggunakan dup2 dimana berfungsi untuk system call membuat salinan deskriptor file.
+dalam kasus ini kami menggunakan dup2 dimana berfungsi untuk system call membuat salinan deskriptor file, 
+dan nantinya akan ditulis dan dibaca oleh pipe dan dieksekusi dengan execv 
+
+```
+char *argv[] = {"ls", NULL};
+        execv("/bin/ls", argv);
+```
+dan 
+
+```
+ char *argv[] = {"wc", "-l", NULL};
+        execv("/usr/bin/wc", argv);
+```
+dimana kita dapat mengetahui command wc berada di /usr/bin/wc 
+dan command ls berada di /bin/ls
+cukup dengan menggunakan terminal dan ketik "whereis wc" dan "whereis ls"
