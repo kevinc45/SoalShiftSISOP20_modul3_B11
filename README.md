@@ -129,3 +129,130 @@ int main(){
 }
 ```
 
+Disitu pertama kita deklarasi matriks kemudian kita buat ada 3 thread 
+dimana thread yang pertama digunakan untuk input matriks A
+kemudian thread yang kedua digunakan untuk input matriks B 
+dan yang terakhir untuk perkalian matriks A dana B
+
+ketika memasuki int main kita menggunakan shared memory agar bisa tetap
+terhubung dengan yang lain dan nantinya akan di faktorialkan hasil dari matriks ini.
+
+
+```
+#include <stdio.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+#include <unistd.h>
+#include <pthread.h>
+
+
+unsigned long long num; 
+int row = 4, column = 5; 
+
+unsigned long long factorial(unsigned long long a){  
+    if(a==0 || a==1) return 1;
+    else return a+ factorial(a-1); 
+}
+
+//fungsi faktorial
+void *faktorial(void *arg){
+    
+    key_t key = 1234;
+    int (*value)[10];
+    int shmid = shmget(key, sizeof(int), IPC_CREAT | 0666);
+    value = shmat(shmid, 0, 0);
+    
+    printf("Hasil faktorial pertambahan matriks ialah: \n");
+    
+    for(int i=0;i<row;i++){ 
+        for(int j=0;j<column;j++){ 
+            num=value[i][j]; 
+            printf("%llu\t", factorial(num)); 
+        }
+        printf("\n");
+    }
+    pthread_exit(0); // keluar thread
+}
+
+void main(){
+    pthread_t thread;
+    
+    key_t key = 1234;
+    int (*value)[10];
+    int shmid = shmget(key, sizeof(int), IPC_CREAT | 0666);
+    value = shmat(shmid,NULL ,0 );
+
+    printf("Hasil perkalian dari matriks A dan B adalah: \n");
+    
+    for(int i=0;i< 4;i++){
+        for(int j=0;j<5;j++){
+            printf("%d\t", value[i][j]);
+        }
+        printf("\n");
+    }
+    pthread_create(&thread, NULL, faktorial, NULL); 
+    pthread_join(thread,NULL); 
+}
+
+```
+
+kita buat deklarasi matriks baru dengan menggunakan unsigned long long agar dapat menampung angka lebih banyak.
+kemudian kita buat rekursif faktorial 
+
+Setelah itu,  kita buat fungsi faktorial digunakan untuk menhitung satu persatu dari hasil matriks di code sebelumnya
+dengan memanggil fungsi rekursif factorial 
+dan tak lupa juga untuk menggunakan shared memory agar hasil dari code sebelumnya dapat terhubung.
+
+didalam int main terdapat printf untuk menampilkan hasil dari code 4a 
+kemudian pthread sendiri untuk menampilkan hasil dari faktorial yang ada di fungsi faktorial
+
+
+```
+#include<stdio.h>
+#include<stdlib.h>
+#include<fcntl.h>
+#include<errno.h>
+#include<sys/wait.h>
+#include<unistd.h>
+
+
+int main(){
+    int p[2];
+    pid_t pp;
+    if(pipe(p) == -1)
+    {
+        fprintf(stderr, "pipe failed");
+        return 1;
+    }
+    pp = fork();
+    if(pp < 0){
+        fprintf(stderr, "fork failed");
+    }
+    else if(pp !=  0) //parent process
+    {
+        close(0);
+        dup2(p[0], 0);  
+        close(p[0]);
+        close(p[1]);
+        char *argv[] = {"wc", "-l", NULL};
+        execv("/usr/bin/wc", argv);
+    }
+    else //child
+    {
+        close(0);
+        dup2(p[1], 1);
+        close(p[0]);
+        close(p[1]);
+        char *argv[] = {"ls", NULL};
+        execv("/bin/ls", argv);
+    }
+    
+    
+}
+```
+
+Disoal ini kita di suruh untuk menghitung jumlah folder dan file di dalam direktori 
+dengan menggunakan system command 'ls' dan 'wc -l'
+dimana command ls digunakan untuk list folder dan file yang ada di sebuah direktori 
+dan command wc -l sendiri biasanya digunakan untuk prints the number of lines in a file.
+dalam kasus ini kami menggunakan dup2 dimana berfungsi untuk system call membuat salinan deskriptor file.
