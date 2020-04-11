@@ -12,10 +12,11 @@ Pada soal nomor 1, kita akan berpetualang sebagai seorang *Pokemon trainer* meng
  - Mutual Exclusion
  - Shared Memory
  
-Sebagai *title* game terbaru dari *franchise* permainan Pokemon, **Poke*ZONE** membagi permainannya menjadi 3 fungsi utama:
+Sebagai *title* game terbaru dari *franchise* permainan Pokemon, **Poke*ZONE** membagi permainannya menjadi 4 fungsi utama:
  1. Mencari Pokemon
- 2. Membuka Pokedex
- 3. Membeli di PokeMart/Shop
+ 2. Menangkap Pokemon (Capture Mode)
+ 3. Membuka PokedexMembeli di PokeMart/Shop
+ 4. Membeli di PokeMart/Shop
 
 **Mencari Pokemon**
 Saat kita ingin mencari pokemon, program akan meng-*generate* sebuah pokemon secara *random* setiap 10 detik dengan kemungkinan 60%.
@@ -58,6 +59,10 @@ Untuk melakukan perpindahan *value* antar program, kita menggunakan ***shared me
 ```
 Shared Memory adalah memori yang dapat diakses secara bersamaan oleh beberapa program dengan tujuan menghubungkan program-program tersebut atau untuk menghindari salinan yang berlebihan/tidak penting.
 ```
+
+**Menangkap Pokemon (Capture Mode)**
+Proses menangkap pokemon dapat terjadi apabila 
+
 
 **Membuka Pokedex**
 Pokedex diakses untuk mengetahui apa saja Pokemon yang sudah kita tangkap, memberikan informasi soal AP yang dimiliki, melepas pokemon, dan memberikan *berry* ke semua pokemon yang dimiliki.
@@ -104,7 +109,6 @@ Untuk penggunaaan Pokedex sendiri, kita sudah membuat sebuah *'dictionary'* yang
 
 
 **Membeli di PokeMart/Shop**
-
 Selain digunakan untuk melakukan pengacakan pada pokemon yang sedang dicari, *shared memory* digunakan juga untuk melakukan pembaruan stok pada barang-barang yang dijual di toko. Karena stok setiap *item* akan bertambah 10 item setiap 10 detik dan **tidak boleh diganggu** oleh proses lain, maka kita juga mengaplikasikan *thread* pada proses ini.
 
 Dilihat pada ```soal2_pokezone.c```, kita menggunakan ```sleep(10)``` pada fungsi *restock* dimana *value* stok tiap *item* tersebut akan di-*update* melalui *shared memory*.
@@ -901,6 +905,6 @@ dimana kita dapat mengetahui command wc berada di /usr/bin/wc
 dan command ls berada di /bin/ls
 cukup dengan menggunakan terminal dan ketik "whereis wc" dan "whereis ls"
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI4MzA3MTEwMSwtNDUyODE2MjMyLDU1ND
+eyJoaXN0b3J5IjpbMTMwNjg3NjM3NiwtNDUyODE2MjMyLDU1ND
 A2MTEwMCw2NzU0NDk1NzhdfQ==
 -->
