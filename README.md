@@ -68,7 +68,7 @@ Pokemon juga dilengkapi dengan AP yang merupakan *Affection Points* yang menjadi
 
 Semua proses yang disebutkan diatas berjalan dengan *thread*-nya masing-masing karena bergerak secara paralel. 
 
-Untuk penentuan AP
+Untuk penentuan AP yang dimiliki setiap Pokemon
 
 Selain digunakan untuk melakukan pengacakan pada pokemon yang sedang dicari, *shared memory* digunakan juga untuk melakukan pembaruan stok pada barang-barang yang dijual di toko.
 
@@ -337,6 +337,6 @@ dimana kita dapat mengetahui command wc berada di /usr/bin/wc
 dan command ls berada di /bin/ls
 cukup dengan menggunakan terminal dan ketik "whereis wc" dan "whereis ls"
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc4NzQ2MjM5Nyw1NTQwNjExMDAsNjc1ND
-Q5NTc4XX0=
+eyJoaXN0b3J5IjpbLTIxMjgwNjQ2NDEsNTU0MDYxMTAwLDY3NT
+Q0OTU3OF19
 -->
