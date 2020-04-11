@@ -67,6 +67,85 @@ Saat memasuki *capture mode*, kita akan dibantu oleh *Lullaby Powder* untuk memp
 
 Apabila slot Pokemon telah penuh dan kita berusaha untuk menangkap Pokemon baru, maka pokemon tersebut secara otomatis dikonversikan ke Pokedollar sesuai dengan *rarity* yang bersangkutan.
 
+```c
+if (capture != -1) printf("[CAPTURE]\nA Wild %s has appeared!\n1. Tangkap\n2. Item\n3. Keluar\n", namapokemon[capture]);
+			else printf("[CAPTURE]\n1. Tangkap\n2. Item\n3. Keluar\n");
+			pthread_create(&t_input,NULL,input,NULL);
+			pthread_join(t_input,NULL);
+			
+			if(inputmenu==1){
+				if (pokeball == 0) {
+					printf("Tidak ada pokeball.\n");
+					return;
+				}
+				if (capture == -1) {
+					printf("Tidak ada pokemon.\n");
+					return;
+				}
+				pokeball--;
+				int par = (capture % 15) / 5;
+				if (par == 0) par = 70;
+				else if (par == 1) par = 50;
+				else if (par == 2) par = 30;
+				if (capture >= 15) par -= 20;
+				if (lullaby_a) par += 20;
+				if (rand() % 100 < par) {
+					printf("Berhasil menangkap %s!\n", namapokemon[capture]);
+					slot = -1;
+					for (int x = 0; x < 7; x++){
+						if (pokemon[x] == -1){
+							slot = x;
+							break;
+						}
+					}
+					if (slot == -1){
+						uangganti = (capture % 15) / 5;
+						if (uangganti == 0) uangganti = 80;
+						else if (uangganti == 1) uangganti = 100;
+						else if (uangganti == 2) uangganti = 200;
+						if (capture >= 15) uangganti += 5000;
+						pokedollar += uangganti;
+						printf("Slot pokemon penuh! Sebagai gantinya, kamu dapat Pokedollar sebanyak %d.\n", uangganti);
+					}
+					else{
+						pthread_mutex_lock(&pokemonm);
+						pokemon[slot] = capture;
+						PokemonAP[slot] = 100;
+						pthread_mutex_unlock(&pokemonm);
+						pthread_mutex_lock(&pokemonslot);
+						pokeslot = slot;
+						pthread_create(&pokemon[slot], NULL, pokemonthread, NULL);
+						pthread_cancel(capturethread);
+						pthread_mutex_lock(&pokemonc);
+						capture = -1;
+						pthread_mutex_unlock(&pokemonc);
+					}
+				}
+				else {
+					printf("Gagal menangkap %s.\n", namapokemon[capture]);
+				}
+			}
+
+			else if(inputmenu == 2){
+				if(lullaby_a){
+					printf("Lullaby Power masih aktif.\n");
+				}
+				if(lullaby <= 0){
+					printf("Kamu tidak punya Lullaby Powder.\n");
+				}
+				else{
+					lullaby--;
+					lullaby_a = 1;
+					pthread_create(&t_lullaby, NULL, lullabythread(), NULL);
+				}
+			}
+			else if(inputmenu == 3){
+				printf("Mengakhiri mode Capture.\n");
+				mode = 0;
+			}
+		}
+```
+
 
 **Membuka Pokedex**
 Pokedex diakses untuk mengetahui apa saja Pokemon yang sudah kita tangkap, memberikan informasi soal AP yang dimiliki, melepas pokemon, dan memberikan *berry* ke semua pokemon yang dimiliki.
@@ -653,9 +732,14 @@ Menggunakan fungsi `strrchr`, kita dapat mengambil *extension* dari mendeteksi s
 
 Untuk memindah *file* dari satu *directory* ke *directory* lain, kita dapat menggunakan fungsi `rename()` yang terdapat dalam *header* `stdio.h` seperti yang dilakukan dalam [situs ini](https://www.daniweb.com/programming/software-development/threads/66448/moving-files-in-c-and-c).
 
-## Kendala Nomor 3
-KC: Belum menguasai *thread* sehingga masih belum dapat melakukan implementasi.
+Ada 3 cara kerja program yang dapat digunakan melalui soal nomor 3:
 
+ 1. -f
+ 2.  /*
+ 3. -d
+
+**-f**
+-f berart
 
 ## Pembahasan nomer 4
 >4a.)
@@ -909,6 +993,6 @@ dimana kita dapat mengetahui command wc berada di /usr/bin/wc
 dan command ls berada di /bin/ls
 cukup dengan menggunakan terminal dan ketik "whereis wc" dan "whereis ls"
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc0NjI5MjUwMCwtNDUyODE2MjMyLDU1ND
-A2MTEwMCw2NzU0NDk1NzhdfQ==
+eyJoaXN0b3J5IjpbLTE3MzA5OTczMjYsLTQ1MjgxNjIzMiw1NT
+QwNjExMDAsNjc1NDQ5NTc4XX0=
 -->
