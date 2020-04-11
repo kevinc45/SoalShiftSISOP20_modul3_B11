@@ -17,7 +17,7 @@ Sebagai *title* game terbaru dari *franchise* permainan Pokemon, **Poke*ZONE** m
  2. Membuka Pokedex
  3. Membeli di PokeMart/Shop
 
-***Mencari Pokemon***
+**Mencari Pokemon**
 Saat kita ingin mencari pokemon, program akan meng-*generate* sebuah pokemon secara *random* setiap 10 detik dengan kemungkinan 60%.
 
 Di program ```soal2_pokezone.c```, kita sudah membuat fungsi *Pokemon Randomizer* untuk menentukan pokemon dengan ID berapa yang akan muncul saat kita sedang mencari Pokemon.
@@ -53,6 +53,8 @@ void *searchthread(){
 	}
 }
 ```
+
+Untuk melakukan perpindahan *value* antar program, kita menggunakan ***shared memory***. 
 ## Pembahasan Soal 3
 
 Untuk mendapatkan ekstensi dari file-file yang terdapat dalam folder `koleksi`, kelompok kami menggunakan potongan *code* yang terdapat [di sini](https://stackoverflow.com/questions/5309471/getting-file-extension-in-c).
@@ -317,6 +319,6 @@ dimana kita dapat mengetahui command wc berada di /usr/bin/wc
 dan command ls berada di /bin/ls
 cukup dengan menggunakan terminal dan ketik "whereis wc" dan "whereis ls"
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODg2NTQzMzk4LDU1NDA2MTEwMCw2NzU0ND
-k1NzhdfQ==
+eyJoaXN0b3J5IjpbLTE3OTYxNzUxNDAsNTU0MDYxMTAwLDY3NT
+Q0OTU3OF19
 -->
