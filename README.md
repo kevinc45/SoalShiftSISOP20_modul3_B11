@@ -66,9 +66,62 @@ Apabila kita melepas Pokemon, maka kita akan mendapat *Pokedollar* dengan jumlah
 
 Pokemon juga dilengkapi dengan AP yang merupakan *Affection Points* yang menjadi parameter apakah pokemon kita akan lepas atau tetap menjadi pokemon yang berpetualang bersama kita.
 
-Semua proses yang 
+Semua proses yang disebutkan diatas berjalan dengan *thread*-nya masing-masing karena bergerak secara paralel. 
 
-Selain digunakan untuk melakukan pengacakan pada pokemon yang sedang dicari, *shared memory* digunakan juga untuk melakukan pembaruan stok pada barang-barang yang dijual di toko.
+Untuk menentukan AP tiap Pokemon, kita menggunakan sebuah *thread* yang mengurangi *affection points* sebesar 10 setiap 10 detik.
+```c
+void *pokemonthread(){
+	int s = slot;
+	pthread_mutex_unlock(&pokemonslot);
+	for(;;){
+		sleep(10);
+		if (mode==0){
+			pthread_mutex_lock(&pokemonm);
+			PokemonAP[s] -= 10;
+			if (PokemonAP[s] <= 0){
+				if (rand()%100>=90) PokemonAP[s] = 50;
+				else {
+					printf("Pokemon-mu lepas!\n");
+					pokemon[s] = -1;
+					PokemonAP[s] = -1;
+					pthread_exit(0);
+				}
+				pthread_mutex_unlock(&pokemonm);
+			}
+		}
+		else continue;
+	}
+}
+```
+
+Nah, disini kita menggunakan ***mutual exclusion (mutex)***. Dilansir dari [Techopedia](https://www.techopedia.com/definition/25629/mutual-exclusion-mutex),
+```
+Mutual exclusion (mutex) adalah sebuah program objek yang mencegah program yang berjalan bersama untuk mengakses sebuah resource yang dibagikan.
+```
+Dalam hal ini, karena kita memiliki beberapa Pokemon dengan AP yang berbeda-beda, maka mutex diperlukan agar AP setiap Pokemon tidak mengalami *collision*.
+
+Untuk penggunaaan Pokedex sendiri, kita sudah membuat sebuah *'dictionary'* yang berisi semua ID Pokemon beserta namanya sehingga dapat diakses seperti menggunakan *array* biasa.
+
+
+**Membeli di PokeMart/Shop**
+
+Selain digunakan untuk melakukan pengacakan pada pokemon yang sedang dicari, *shared memory* digunakan juga untuk melakukan pembaruan stok pada barang-barang yang dijual di toko. Karena stok setiap *item* akan bertambah 10 item setiap 10 detik dan **tidak boleh diganggu** oleh proses lain, maka kita juga mengaplikasikan *thread* pada proses ini.
+
+Dilihat pada ```soal2_pokezone.c```, kita menggunakan ```sleep(10)``` pada fungsi *restock* dimana *value* stok tiap *item* tersebut akan di-*update* melalui *shared memory*.
+
+```c
+void* restock(){
+    for(;;){
+        *sharedlullaby += 10;
+        if(*sharedlullaby>200) *sharedlullaby=200;
+        *sharedpokeball += 10;
+        if(*sharedpokeball>200) *sharedpokeball=200;
+        *sharedberry += 10;
+        if(*sharedberry>200) *sharedberry=200;
+        sleep(10);
+    }
+}
+```
 
 ## Pembahasan Soal 2
 
@@ -848,6 +901,6 @@ dimana kita dapat mengetahui command wc berada di /usr/bin/wc
 dan command ls berada di /bin/ls
 cukup dengan menggunakan terminal dan ketik "whereis wc" dan "whereis ls"
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ1MjgxNjIzMiw1NTQwNjExMDAsNjc1ND
-Q5NTc4XX0=
+eyJoaXN0b3J5IjpbMTI4MzA3MTEwMSwtNDUyODE2MjMyLDU1ND
+A2MTEwMCw2NzU0NDk1NzhdfQ==
 -->
