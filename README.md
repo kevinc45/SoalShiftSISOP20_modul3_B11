@@ -13,7 +13,7 @@ Pada soal nomor 1, kita akan berpetualang sebagai seorang *Pokemon trainer* meng
  - Mutual exclusion
  - Shared memory
  
-Sebagai *
+Sebagai *title* game terbaru dari *franchise* permainan Pokemon, **Poke*ZONE** membagi permainannya menjadi 3 fungsi utama 
 
 ## Pembahasan Soal 3
 
@@ -279,5 +279,5 @@ dimana kita dapat mengetahui command wc berada di /usr/bin/wc
 dan command ls berada di /bin/ls
 cukup dengan menggunakan terminal dan ketik "whereis wc" dan "whereis ls"
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODIyODExNzc4LDY3NTQ0OTU3OF19
+eyJoaXN0b3J5IjpbLTUwNzA5NzQ5OSw2NzU0NDk1NzhdfQ==
 -->
