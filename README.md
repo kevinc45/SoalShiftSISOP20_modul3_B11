@@ -4,10 +4,8 @@
  - Achmad Sofyan Pratama (05111840000061)
  - Kevin Christian Hadinata (05111840000066)
 
-
-
 ## Pembahasan Soal 1
-Belum dapat terselesaikan karena terkendala belum menguasai thread.
+Pada soal nomor 1, kita akan berpetualang sebagai seorang *Pokemon trainer* menggunakan bantuan *Thread*, *Mutua
 
 ## Pembahasan Soal 3
 
@@ -273,5 +271,5 @@ dimana kita dapat mengetahui command wc berada di /usr/bin/wc
 dan command ls berada di /bin/ls
 cukup dengan menggunakan terminal dan ketik "whereis wc" dan "whereis ls"
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjc1NDQ5NTc4XX0=
+eyJoaXN0b3J5IjpbNzgwMDIyMjk5LDY3NTQ0OTU3OF19
 -->
