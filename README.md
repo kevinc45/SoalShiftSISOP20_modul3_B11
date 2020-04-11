@@ -9,7 +9,11 @@ Pada soal nomor 1, kita akan berpetualang sebagai seorang *Pokemon trainer* meng
 
 **Kata Kunci**
 
- - List item
+ - Thread
+ - Mutual exclusion
+ - Shared memory
+ 
+ Di soal nomor 1, game Poke*Zone
 
 ## Pembahasan Soal 3
 
@@ -275,5 +279,5 @@ dimana kita dapat mengetahui command wc berada di /usr/bin/wc
 dan command ls berada di /bin/ls
 cukup dengan menggunakan terminal dan ketik "whereis wc" dan "whereis ls"
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU4ODY5MzYzNyw2NzU0NDk1NzhdfQ==
+eyJoaXN0b3J5IjpbLTg4MjA1MDA4Myw2NzU0NDk1NzhdfQ==
 -->
