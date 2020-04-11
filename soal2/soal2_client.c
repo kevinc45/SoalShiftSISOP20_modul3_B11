@@ -10,27 +10,27 @@
 #include<stdbool.h>
 #define PORT 8080
 
-void *MencariPlayer()
-{
-    while(1)
+    void *MencariPlayer()
     {
-        printf("Menunggu player...\n");
-        sleep(1);
-    }
-}
-
-void *GO(void *arg)
-{
-    while(1)
-    {
-        char ch = getchar();
-        if(ch == ' ') 
-        {
-            printf("hit !!\n");
-            send(*(int*) arg, &ch, sizeof(ch), 0);
+        while(1)
+        {   
+            printf("Menunggu player...\n");
+            sleep(1);
         }
     }
-}
+
+    void *GO(void *arg)
+    {
+        while(1)
+        {
+            char ch = getchar();
+            if(ch == ' ') 
+            {
+                printf("hit !!\n");
+                send(*(int*) arg, &ch, sizeof(ch), 0);
+            }
+        }
+    }
 
 int main(int argc, char const *argv[])
 {
@@ -61,12 +61,12 @@ int main(int argc, char const *argv[])
         printf("\nConnection Failed\n");
         return -1;
     }
-    char cmd1[1024], cmd2[1024], username[1024], password[1024], temp[1024];
+    char arr1[1024], arr2[1024], username[1024], password[1024], temp[1024];
     screen1:
-    //goto screen2;
+    
     printf("1. Login\n2. Register\nChoices : ");
-    scanf("%s", cmd1);
-    if(strcmp(cmd1, "login") == 0)
+    scanf("%s", arr1);
+    if(strcmp(arr1, "login") == 0)
     {
         strcpy(username, "l ");
         printf("Username : ");
@@ -79,24 +79,24 @@ int main(int argc, char const *argv[])
         strcat(username, "\t");
         strcat(username, password);
         send(sock, username, strlen(username), 0);
-        int feedback;
-        read(sock, &feedback, sizeof(feedback));
-        if(feedback)
+        int back;
+        read(sock, &back, sizeof(back));
+        if(back)
         {
             printf("login success\n");
             send(sock, "sukses", 6, 0);
             screen2:
             printf("1.MENCARI...\n2. Logout\nChoices : ");
-            scanf("%s", cmd2);
-            if(strcmp(cmd2, "logout") == 0)
+            scanf("%s", arr2);
+            if(strcmp(arr2, "logout") == 0)
             {
-                send(sock, cmd2, strlen(cmd2), 0);
+                send(sock, arr2, strlen(arr2), 0);
                 goto screen1;
             
-            else if(strcmp(cmd2, "find") == 0)
+            else if(strcmp(arr2, "find") == 0)
             {
                 int start;
-                send(sock, cmd2, strlen(cmd2), 0);
+                send(sock, arr2, strlen(arr2), 0);
                 pthread_t th;
                 pthread_create(&th, NULL, MencariPlayer, NULL);
                 read(sock, &start, sizeof(start));
@@ -138,7 +138,7 @@ int main(int argc, char const *argv[])
             goto screen1;
         }
     }
-    else if(strcmp(cmd, "register") == 0)
+    else if(strcmp(arr1, "register") == 0)
     {
         strcpy(username, "r ");
         printf("Username : ");
