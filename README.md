@@ -5,6 +5,7 @@
  - Kevin Christian Hadinata (05111840000066)
 
 
+
 ## Pembahasan Soal 1
 Belum dapat terselesaikan karena terkendala belum menguasai thread.
 
@@ -271,3 +272,6 @@ dan
 dimana kita dapat mengetahui command wc berada di /usr/bin/wc 
 dan command ls berada di /bin/ls
 cukup dengan menggunakan terminal dan ketik "whereis wc" dan "whereis ls"
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNjc1NDQ5NTc4XX0=
+-->
