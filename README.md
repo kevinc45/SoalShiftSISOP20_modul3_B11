@@ -54,7 +54,10 @@ void *searchthread(){
 }
 ```
 
-Untuk melakukan perpindahan *value* antar program, kita menggunakan ***shared memory***. 
+Untuk melakukan perpindahan *value* antar program, kita menggunakan ***shared memory***. Menurut [Wikipedia](https://en.wikipedia.org/wiki/Shared_memory),
+```
+Shared Memory adalah memori yang dapat diakses secara bersamaan oleh beberapa program that may be simultaneously accessed by multiple programs with an intent to provide communication among them or avoid redundant copies.
+```
 ## Pembahasan Soal 3
 
 Untuk mendapatkan ekstensi dari file-file yang terdapat dalam folder `koleksi`, kelompok kami menggunakan potongan *code* yang terdapat [di sini](https://stackoverflow.com/questions/5309471/getting-file-extension-in-c).
@@ -319,6 +322,6 @@ dimana kita dapat mengetahui command wc berada di /usr/bin/wc
 dan command ls berada di /bin/ls
 cukup dengan menggunakan terminal dan ketik "whereis wc" dan "whereis ls"
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTYxNzUxNDAsNTU0MDYxMTAwLDY3NT
-Q0OTU3OF19
+eyJoaXN0b3J5IjpbLTE2MTk3Mzc4NSw1NTQwNjExMDAsNjc1ND
+Q5NTc4XX0=
 -->
