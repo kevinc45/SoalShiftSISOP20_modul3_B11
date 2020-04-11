@@ -4,6 +4,8 @@
  - Achmad Sofyan Pratama (05111840000061)
  - Kevin Christian Hadinata (05111840000066)
 
+https://raw.githubusercontent.com/kevinc45/SoalShiftSISOP20_modul3_B11/master/cover.png
+
 ## Pembahasan Soal 1
 Pada soal nomor 1, kita akan berpetualang sebagai seorang *Pokemon trainer* menggunakan bantuan *thread*, *mutual exclusion*, dan *shared memory*.
 
