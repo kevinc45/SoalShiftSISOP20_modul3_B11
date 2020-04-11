@@ -742,7 +742,7 @@ Ada 3 cara kerja program yang dapat digunakan melalui soal nomor 3:
 -f berarti memasukkan *file* tertentu saja ke dalam *folder* yang diberi nama sesuai dengan ekstensi dari *file* tersebut.
 
 ```c
-void* mindahfilepakefungsiyangsatunya(void *filelama){
+void* mindahfilepakefungsiini(void *filelama){
 	char namafile[100];
 	char *x = (char*)filelama;
 	char *tmp = strrchr(x, '/');
@@ -768,8 +768,30 @@ void* mindahfilepakefungsiyangsatunya(void *filelama){
 /* melakukan proses *sorting* dan pengelompokan berdasarkan ekstensi *file* pada seluruh *file* yang terdapat pada *folder* tempat program dijalankan (*current working directory*)
 
 ```c
-
+void* mindahfilepakefungsiyangsatunya(void *filelama){
+	char namafile[100];
+	char *x = (char*)filelama;
+	char *tmp = strrchr(x, '/');
+	if(!tmp) strcpy(namafile,x);
+	else strcpy(namafile,tmp);
+	const char *ekstensifile = get_filename_ext(namafile);
+	char filebaru[100];
+	char ekstensifile2[100];	
+	strcpy(ekstensifile2,ekstensifile);
+	if (strcmp(ekstensifile,"")==0) strcpy(ekstensifile2,"UNKNOWN");
+	lower(ekstensifile2);
+	strcpy(filebaru,directorylama);
+	strcat(filebaru,"/");
+	strcat(filebaru,ekstensifile2);
+	strcat(filebaru,"/");
+	strcat(filebaru,namafile);
+	mkdir(ekstensifile2,0755);
+	rename(x,filebaru);
+}
 ```
+
+**-d**
+-d merupakan fungsi yang mirip seperti **/***, namun kita dapat memodifikasi *current working directory* tempat *folder* berisi file yang mau kita *sorting*
 
 ## Pembahasan nomer 4
 >4a.)
@@ -1023,6 +1045,6 @@ dimana kita dapat mengetahui command wc berada di /usr/bin/wc
 dan command ls berada di /bin/ls
 cukup dengan menggunakan terminal dan ketik "whereis wc" dan "whereis ls"
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5MDQ2MDEyMSwtNDUyODE2MjMyLDU1ND
-A2MTEwMCw2NzU0NDk1NzhdfQ==
+eyJoaXN0b3J5IjpbLTE1ODI0MTkzNzksLTQ1MjgxNjIzMiw1NT
+QwNjExMDAsNjc1NDQ5NTc4XX0=
 -->
