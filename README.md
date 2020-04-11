@@ -60,7 +60,9 @@ Shared Memory adalah memori yang dapat diakses secara bersamaan oleh beberapa pr
 ```
 
 **Membuka Pokedex**
-Pokedex diakses untuk mengetahui apa saja Pokemon yang sudah kita tangkap, memberikan informasi soal AP yang dimiliki, melepas pokemon, dan memberikan *berry* ke semua pokemon yang dimiliki. 
+Pokedex diakses untuk mengetahui apa saja Pokemon yang sudah kita tangkap, memberikan informasi soal AP yang dimiliki, melepas pokemon, dan memberikan *berry* ke semua pokemon yang dimiliki.
+
+Apabila kita melepas Pokemon, maka kita akan mendapat *Pokedollar* dengan jumlah tertentu sesuai dengan *rarity*
 
 Selain digunakan untuk melakukan pengacakan pada pokemon yang sedang dicari, *shared memory* digunakan juga untuk melakukan pembaruan stok pada barang-barang yang dijual di toko.
 
@@ -329,6 +331,6 @@ dimana kita dapat mengetahui command wc berada di /usr/bin/wc
 dan command ls berada di /bin/ls
 cukup dengan menggunakan terminal dan ketik "whereis wc" dan "whereis ls"
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MzIyMTk5Niw1NTQwNjExMDAsNjc1ND
-Q5NTc4XX0=
+eyJoaXN0b3J5IjpbODI2MzE5NDU3LDU1NDA2MTEwMCw2NzU0ND
+k1NzhdfQ==
 -->
