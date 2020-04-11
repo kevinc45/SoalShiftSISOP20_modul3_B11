@@ -58,6 +58,7 @@ Untuk melakukan perpindahan *value* antar program, kita menggunakan ***shared me
 ```
 Shared Memory adalah memori yang dapat diakses secara bersamaan oleh beberapa program dengan tujuan menghubungkan program-program tersebut atau untuk menghindari salinan yang berlebihan/tidak penting.
 ```
+Selain digunakan untuk melakukan pengacakan pada
 
 
 ## Pembahasan Soal 3
@@ -324,6 +325,6 @@ dimana kita dapat mengetahui command wc berada di /usr/bin/wc
 dan command ls berada di /bin/ls
 cukup dengan menggunakan terminal dan ketik "whereis wc" dan "whereis ls"
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5MjQ4OTc4NSw1NTQwNjExMDAsNjc1ND
-Q5NTc4XX0=
+eyJoaXN0b3J5IjpbLTIxMTY4OTIwNjIsNTU0MDYxMTAwLDY3NT
+Q0OTU3OF19
 -->
