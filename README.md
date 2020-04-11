@@ -61,7 +61,9 @@ Shared Memory adalah memori yang dapat diakses secara bersamaan oleh beberapa pr
 ```
 
 **Menangkap Pokemon (Capture Mode)**
-Proses menangkap pokemon dapat terjadi apabila 
+Proses menangkap pokemon dapat terjadi apabila *wild pokemon* telah ditemukan. Karena dalam 10 detik kita belum tentu menemukan *wild pokemon*, maka proses tetap harus dijalankan secara paralel agar tidak mengganggu kinerja proses yang lain. Oleh karena itu, kita menggunakan *thread*.
+
+Saat memasuki *capture mode*, kita akan dibantu oleh *Lullaby Powder*
 
 
 **Membuka Pokedex**
@@ -905,6 +907,6 @@ dimana kita dapat mengetahui command wc berada di /usr/bin/wc
 dan command ls berada di /bin/ls
 cukup dengan menggunakan terminal dan ketik "whereis wc" dan "whereis ls"
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMwNjg3NjM3NiwtNDUyODE2MjMyLDU1ND
-A2MTEwMCw2NzU0NDk1NzhdfQ==
+eyJoaXN0b3J5IjpbLTE1OTU2MTA1MzcsLTQ1MjgxNjIzMiw1NT
+QwNjExMDAsNjc1NDQ5NTc4XX0=
 -->
