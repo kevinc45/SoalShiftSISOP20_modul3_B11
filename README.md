@@ -15,7 +15,10 @@ Pada soal nomor 1, kita akan berpetualang sebagai seorang *Pokemon trainer* meng
 Sebagai *title* game terbaru dari *franchise* permainan Pokemon, **Poke*ZONE** membagi permainannya menjadi 3 fungsi utama:
  1. Mencari Pokemon
  2. Membuka Pokedex
- 3. 
+ 3. Membeli di PokeMart/Shop
+
+***Mencari Pokemon***
+Saat 
 ## Pembahasan Soal 3
 
 Untuk mendapatkan ekstensi dari file-file yang terdapat dalam folder `koleksi`, kelompok kami menggunakan potongan *code* yang terdapat [di sini](https://stackoverflow.com/questions/5309471/getting-file-extension-in-c).
@@ -280,5 +283,5 @@ dimana kita dapat mengetahui command wc berada di /usr/bin/wc
 dan command ls berada di /bin/ls
 cukup dengan menggunakan terminal dan ketik "whereis wc" dan "whereis ls"
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgyNTgzNzkwMyw2NzU0NDk1NzhdfQ==
+eyJoaXN0b3J5IjpbOTQ5OTIxNzEyLDY3NTQ0OTU3OF19
 -->
